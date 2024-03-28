@@ -5,7 +5,7 @@ pipeline {
         stage('Cloning') {
             steps {
                 echo 'Cloining the code from the github repository.'
-                git 'https://github.com/Rohit2k00/Insurence-project.git'
+                git 'https://github.com/TRFAS/terra.git'
 
             }
         }
@@ -23,7 +23,7 @@ pipeline {
        stage('Image Creating') {
            steps {
                 echo 'creating an image using docker'
-                sh 'sudo docker build -t rohitwasnik1112/star-insurance .'
+                sh 'sudo docker build -t dineshreddyramala/insure_project.'
            }
 
        }
@@ -32,9 +32,12 @@ pipeline {
        stage('Pushing') {
            steps {
                echo 'pushing that image to the DockerHub'
-               withCredentilas([usernamePassword(credentialsId: 'Docker-pass', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                  sh 'sudo docker login -u ${env.USERNAME} -p ${env.PASSWORD}'
-                  sh 'sudo docker push rohitwasnik1112/star-insurance'
+               withCredentials([usernamePassword(credentialsId: '4fc5f42e-7635-48f7-a096-07b75b5f4324', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+               sh 'docker login -u {USERNAME} -p {PASSWORD}'
+               sh 'docker push dineshreddyramala/insure_project'
+                      }
+              
+                 }
                }
             }
 
