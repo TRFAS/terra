@@ -49,5 +49,5 @@ pipeline {
                 sh 'sudo ansible-playbook /home/ubuntu/Insurence-project/playbook.yaml'
             }
         }
-    }
+    
 }
