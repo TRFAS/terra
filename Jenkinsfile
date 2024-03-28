@@ -39,15 +39,12 @@ pipeline {
               
                  }
                }
-            }
-
-         }
         
         stage('Deploying') {
             steps {
                 echo 'Deploying that application to the production server'
                 sh 'sudo ansible-playbook /home/ubuntu/Insurence-project/playbook.yaml'
-            }
+              }
         }
-    
+    }
 }
